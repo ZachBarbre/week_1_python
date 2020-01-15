@@ -1,5 +1,5 @@
 bill_amount = float(input("Total bill amount? "))
-service_level = input("Level of service? ")
+service_level = input("Level of service? ").lower()
 number_people = float(input("Split how many ways? "))
 
 if service_level == 'bad':
