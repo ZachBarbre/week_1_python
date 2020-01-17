@@ -19,13 +19,32 @@ def get_input():
     if encrypt_or_decrypt == 'encrypt':
         encrypt(shift, message)
     elif encrypt_or_decrypt == 'decrypt':
-        decrypt()
+        decrypt(shift, message)
     else:
         print("this should not display")
 
 def encrypt(shift, message):
-    print('encrypt')
+    ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+    encrypt_message = ''
+    
+    for letter in message.lower():
+        if letter == ' ' or letter.isdigit():
+            encrypt_message += letter
+        else:
+            encrypt_index = ALPHABET.rindex(letter)
+            encrypt_message += ALPHABET[(encrypt_index + shift) % 26]
+    return encrypt_message
 
-def decrypt():
-    print('decrypt')
+def decrypt(shift, message):
+    ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+    decrypt_message = ''
+    
+    for letter in message.lower():
+        if letter == ' ' or letter.isdigit():
+            decrypt_message += letter
+        else:
+            decrypt_index = ALPHABET.rindex(letter)
+            decrypt_message += ALPHABET[(decrypt_index - shift) % 26]
+    return decrypt_message
 
+print(get_input())
